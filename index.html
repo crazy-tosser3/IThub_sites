@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Москва — Столица России</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__container">
+            <div class="logo">МОСКВА</div>
+            <nav class="nav">
+                <a href="#hero" class="nav__link">Главная</a>
+                <a href="#about" class="nav__link">О городе</a>
+                <a href="#interactive-map" class="nav__link">Места</a>
+                <a href="#ithub" class="nav__link">IThub</a>
+                <a href="#reviews" class="nav__link">Отзывы</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero__content reveal">
+                <h1 id="typing-hero">Сердце России</h1>
+                <a href="#about" class="btn">Узнать больше</a>
+            </div>
+        </section>
+
+        <section class="history-modern" id="about">
+            <div class="container">
+                <h2 class="section-title reveal">История Москвы</h2>
+                
+                <div class="history-container">
+                    <div class="history-card reveal">
+                        <div class="history-card__image">
+                            <img src="./img/1147.jpg" alt="1147">
+                        </div>
+                        <div class="history-card__info">
+                            <span class="history-card__number">01</span>
+                            <h3>1147: Начало пути</h3>
+                            <p>Первое письменное упоминание Москвы датируется 4 апреля 1147 года. Об этом сообщает Ипатьевская летопись: в этот день ростово-­суздальский князь Юрий Долгорукий встретился в «поселении Москов» со своим союзником князем Святославом Ольговичем. Именно от этой даты российская историческая наука ведёт отсчёт истории города.</p>
+                        </div>
+                    </div>
+
+                    <div class="history-card reveal">
+                        <div class="history-card__image">
+                            <img src="./img/Sobor.jpg" alt="1561">
+                        </div>
+                        <div class="history-card__info">
+                            <span class="history-card__number">02</span>
+                            <h3>1555 - 1561: Златоглавая</h3>
+                            <p>Собор Покрова Пресвятой Богородицы (известный как Храм Василия Блаженного) был возведён в честь взятия Казани и освящён 29 июня 1561 года. Его строительство велось в 1555–1561 годах по указу царя Ивана IV Грозного. Именно 29 июня 1561 года, по найденной «летописи» на стенах храма, датировано полное завершение стройки.</p>
+                        </div>
+                    </div>
+
+                    <div class="history-card reveal">
+                        <div class="history-card__image">
+                            <img src="./img/moscow_city_history.jpg" alt="Сегодня">
+                        </div>
+                        <div class="history-card__info">
+                            <span class="history-card__number">03</span>
+                            <h3>Сегодня: Мегаполис</h3>
+                            <p>Сегодня Москва — крупнейший город России и один из самых крупных мегаполисов мира. По данным властей, к январю 2025 года её население достигло 13,3 млн человек. Столица сочетает в себе исторические традиции и технологические новшества: на компактной территории рядом с древними памятниками (Кремлёвские стены, храмы, исторические кварталы) выросли ультрасовременные небоскрёбы.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats section">
+            <div class="container">
+                <h2 class="section-title reveal">Москва в цифрах</h2>
+                <div class="bento-grid">
+                    <div class="bento-item reveal main-fact">
+                        <span class="bento-num">13.1м</span>
+                        <p>Жителей — самый населенный город Европы</p>
+                    </div>
+                    <div class="bento-item reveal">
+                        <span class="bento-num">879</span>
+                        <p>Лет со дня основания</p>
+                    </div>
+                    <div class="bento-item reveal accent-bg">
+                        <span class="bento-num">№1</span>
+                        <p>В России по IT-технологиям</p>
+                    </div>
+                    <div class="bento-item reveal">
+                        <span class="bento-num">200+</span>
+                        <p>Музеев и галерей</p>
+                    </div>
+                    <div class="bento-item reveal wide">
+                        <p>«Москва — это город, который никогда не спит, объединяя в себе энергию будущего и величие прошлого»</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section section" id="interactive-map">
+            <div class="container">
+                <h2 class="section-title reveal">Интерактивные локации</h2>
+                <div class="map-container reveal">
+                    <svg class="map-connections" id="map-svg" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none;">
+                        <line id="line-0" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+                        <line id="line-1" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5" opacity="0.5" />
+                    </svg>
+
+                    <div class="node-card" style="top: 10%; left: 15%;">
+                        <div class="node-content">
+                            <img src="./img/kreml.jpg" alt="Кремль">
+                            <div class="node-text">
+                                <h4>Кремль</h4>
+                                <p class="node-detail">Главная крепость страны. Здесь принимаются важнейшие решения.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="node-card" style="top: 50%; left: 45%;">
+                        <div class="node-content">
+                            <img src="./img/vsiliy_blaj.jpg" alt="Собор">
+                            <div class="node-text">
+                                <h4>Храм Василия Блаженного</h4>
+                                <p class="node-detail">Архитектурный шедевр XVI века, ставший символом всей России.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="node-card" style="top: 15%; left: 70%;">
+                        <div class="node-content">
+                            <img src="./img/moscow_city.jpg" alt="Сити">
+                            <div class="node-text">
+                                <h4>Москва-Сити</h4>
+                                <p class="node-detail">Современный деловой квартал с самыми высокими небоскребами Европы.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ithub section" id="ithub">
+            <div class="container">
+                <h2 class="section-title reveal">Филиалы IThub</h2>
+                <div class="ithub-sandbox" id="sandbox">
+                    <div class="drag-item-free" style="top: 40px; left: 40px;">
+                        <div class="hub-main-info"><span class="status-dot"></span><strong>Центральный филиал</strong></div>
+                        <div class="hub-details">
+                            <img src="./img/Kurskaya.jpg">
+                            <p>Флагманский кампус в центре. 5 этажей технологий и дизайна.</p>
+                        </div>
+                    </div>
+                    <div class="drag-item-free" style="top: 120px; left: 420px;">
+                        <div class="hub-main-info"><span class="status-dot" style="background:#ff7e05"></span><strong>Северный хаб</strong></div>
+                        <div class="hub-details">
+                            <img src="./img/VDNH.jpg">
+                            <p>Уютный кампус рядом с ВДНХ. Идеально для глубокого кодинга.</p>
+                        </div>
+                    </div>
+                    <div class="drag-item-free" style="top: 280px; left: 150px;">
+                        <div class="hub-main-info"><span class="status-dot" style="background:#3498db"></span><strong>Восточный кампус</strong></div>
+                        <div class="hub-details">
+                            <img src="./img/Vostochniy.jpg">
+                            <p>Инновационная точка с акцентом на GameDev и киберспорт.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews section" id="reviews">
+            <div class="container">
+                <h2 class="section-title reveal">Отзывы студентов</h2>
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img class="avatar" src="./img/Alisa.jpg">
+                            <h3>Алиса Резниченко</h3>
+                            <p>Студентка IThub</p>
+                            <span>Наведи, чтобы прочитать</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>"Проучилась половину первого курса. Понравилось само помещение — чисто, без запаха сигарет, есть отдельные места для курения. В столовой вкусная еда. Вход по пропускам, что добавляет безопасности. Хорошее оснащение: современные компьютеры, в некоторых кабинетах — Mac, есть 3D-принтеры, электронные доски и стилусы. Записываются уроки, что удобно при пропусках. Преподаватели в основном объясняют понятно и спокойно."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p><a href="https://github.com/crazy-tosser3">GitHub</a> | <a href="https://t.me/crzto3">Telegram</a></p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script src="main.js"></script>
+</body>
+</html>
