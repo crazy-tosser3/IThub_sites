@@ -682,7 +682,7 @@
 
 @keyframes accent-pulse {
   0%, 100% { box-shadow: 0 10px 30px rgba(231, 76, 60, 0.25); }
-  50%       { box-shadow: 0 10px 55px rgba(231, 76, 60, 0.6);  }
+  50%       { box-shadow: 0 10px 55px #e74c3c99;  }
 }
 
 .accent-bg {

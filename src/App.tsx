@@ -127,14 +127,14 @@ type Person = {
 };
 
 const people: Person[] = [
-  { name: "Александр Суворов", years: "1730–1800", description: "Гениальный полководец" },
-  { name: "Эмиль Дьяков",   years: "1870–1945", description: "Археолог‑исследователь" },
-  { name: "Наталья Гумилёва", years: "1915–2002", description: "Поэт‑голос эпохи" },
-  { name: "Ксения Собакина", years: "род. 1986", description: "Художник‑исследователь" },
-  { name: "Игорь Сечин",    years: "род. 1958", description: "Нефтяной предприниматель" },
-  { name: "Алина Костина",  years: "род. 1994", description: "IT‑предприниматель" },
-  { name: "Мария Шарапова", years: "род. 1987", description: "Теннисный идол" },
-  { name: "Дмитрий Пучков", years: "род. 1972", description: "Научный блогер" },
+  { name: "Георгий Жуков", years: "1896–1974", description: "Армия и Наука" },
+  { name: "Сергей Королёв", years: "1907–1966", description: "Армия и Наука" },
+  { name: "Михаил Булгаков", years: "1891–1940", description: "Общество и Культура" },
+  { name: "Раневская", years: "1896–1984", description: "Общество и Культура" },
+  { name: "Владимир Высоцкий", years: "1938–1980", description: "Общество и Культура" },
+  { name: "Сергей Собянин", years: "род. 1971", description: "Экономика и Государство" },
+  { name: "Юрий Долгорукий", years: "1086–1157", description: "Экономика и Государство" },
+  { name: "Иван III", years: "1440–1505", description: "Экономика и Государство" },
 ];
 
 function updateLines(mapContainer: HTMLDivElement | null) {
