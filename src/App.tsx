@@ -4,6 +4,9 @@ import { HeroSection } from './components/HeroSection'
 import { HistorySection } from './components/HistorySection'
 import { StatsSection } from './components/StatsSection'
 import { PeopleSection } from './components/PeopleSection'
+import { SymbolsSection } from './components/SymbolsSection'
+import { ArchitectureSection } from './components/ArchitectureSection'
+import { CulturalTraditionsSection } from './components/CulturalTraditionsSection'
 import { MapSection } from './components/MapSection'
 import { IThubSection } from './components/IThubSection'
 import { ReviewsSection } from './components/ReviewsSection'
@@ -33,6 +36,9 @@ export function App() {
       <HistorySection />
       <StatsSection />
       <PeopleSection />
+      <SymbolsSection />
+      <ArchitectureSection />
+      <CulturalTraditionsSection />
       <MapSection mapRef={mapRef} />
       <IThubSection sandboxRef={sandboxRef} />
       <ReviewsSection />

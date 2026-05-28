@@ -1,4 +1,4 @@
-import type { HistoryItem, LocationNode, Hub, StatItem, Person, Review } from '../types'
+import type { HistoryItem, LocationNode, Hub, StatItem, Person, Review, SymbolItem, ArchitectureEra, CulturalTradition } from '../types'
 
 export const historyItems: HistoryItem[] = [
   {
@@ -97,6 +97,67 @@ export const people: Person[] = [
   { name: 'Юрий Долгорукий',   years: '1090-е – 1157', description: 'Экономика и Государство' },
   { name: 'Иван III',          years: '1440–1505', description: 'Экономика и Государство' },
   { name: 'Владимир Путин',    years: 'род. 1952', description: 'Экономика и Государство' },
+];
+
+export const symbols: SymbolItem[] = [
+  {
+    name: 'Герб Москвы',
+    description: 'Главный символ города — герб с изображением Святого Георгия Победоносца, поражающего змея. Он олицетворяет победу добра над злом и уходит корнями в княжескую символику.',
+    image: '/img/gerb.png',
+    alt: 'Герб Москвы',
+  },
+  {
+    name: 'Архитектурные символы',
+    description: 'Визитной карточкой Москвы являются Красная площадь и Собор Василия Блаженного, известные во всем мире и привлекающие миллионы туристов.',
+    image: '/img/Sobor.jpg',
+    alt: 'Собор Василия Блаженного',
+  },
+  {
+    name: '«Белокаменная»',
+    description: 'Это неофициальное название связано с белокаменными стенами Московского Кремля, построенными в XIV–XV веках, которые придавали городу величественный и светлый облик.',
+  },
+  {
+    name: '«Третий Рим»',
+    description: 'Идея о духовном наследии Москвы после падения Рима и Константинополя. Эта концепция подчёркивала роль города как нового центра православного мира.',
+  },
+];
+
+export const architectureEras: ArchitectureEra[] = [
+  {
+    name: 'Средневековая Русь',
+    description: 'Кремль, монастыри',
+  },
+  {
+    name: 'Барокко и классицизм',
+    description: 'Дворцы, усадьбы',
+  },
+  {
+    name: 'Советская архитектура',
+    description: 'Сталинские высотки',
+  },
+  {
+    name: 'Современность',
+    description: 'Москва-Сити',
+  },
+];
+
+export const culturalTraditions: CulturalTradition[] = [
+  {
+    name: 'Масленица',
+    description: 'Народные гуляния, блины и сжигание чучела.',
+  },
+  {
+    name: 'День города',
+    description: 'Масштабные концерты и фестивали по всей столице.',
+  },
+  {
+    name: 'Сезонные ярмарки',
+    description: 'Пасхальные и рождественские базары в центре города.',
+  },
+  {
+    name: 'Фестиваль «Круг света»',
+    description: 'Впечатляющие световые шоу на фасадах зданий.',
+  },
 ];
 
 export const reviews: Review[] = [

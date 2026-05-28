@@ -51,3 +51,20 @@ export type Review = {
   image: string;
   text: string;
 };
+
+export interface SymbolItem {
+  name: string;
+  description: string;
+  image?: string;
+  alt?: string;
+}
+
+export interface ArchitectureEra {
+  name: string;
+  description: string;
+}
+
+export interface CulturalTradition {
+  name: string;
+  description: string;
+}

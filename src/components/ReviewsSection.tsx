@@ -1,6 +1,13 @@
+import { useState } from 'react'
 import { reviews } from '../data'
 
 export function ReviewsSection() {
+  const [flippedStates, setFlippedStates] = useState<Record<string, boolean>>({})
+
+  const handleFlip = (name: string) => {
+    setFlippedStates((prev) => ({ ...prev, [name]: !prev[name] }))
+  }
+
   return (
     <section className="py-[100px] max-[768px]:py-[40px]" id="reviews">
       <div className="max-w-[1200px] mx-auto px-5">
@@ -9,14 +16,17 @@ export function ReviewsSection() {
         </h2>
         <div className="flex flex-wrap justify-center gap-8 lg:gap-12">
           {reviews.map((review) => (
-            // flip card — perspective wrapper
-            <div key={review.name} className="w-[350px] h-[450px] [perspective:1000px] group reveal">
+            <div
+              key={review.name}
+              className="w-[350px] h-[450px] [perspective:1000px] group reveal cursor-pointer"
+              onClick={() => handleFlip(review.name)}
+            >
               {/* inner rotating layer */}
               <div
                 className={[
                   'relative w-full h-full [transform-style:preserve-3d]',
                   'transition-transform duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]',
-                  'group-hover:[transform:rotateY(180deg)]',
+                  flippedStates[review.name] ? '[transform:rotateY(180deg)]' : '',
                 ].join(' ')}
               >
                 {/* front */}
@@ -34,7 +44,7 @@ export function ReviewsSection() {
                   />
                   <h3 className="font-bold text-lg mb-1">{review.name}</h3>
                   <p className="text-[#666] mb-2">{review.title}</p>
-                  <span className="text-sm text-[#999]">Наведи, чтобы прочитать</span>
+                  <span className="text-sm text-[#999]">Нажми, чтобы прочитать</span>
                 </div>
                 {/* back */}
                 <div
