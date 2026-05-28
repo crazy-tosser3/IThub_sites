@@ -106,8 +106,8 @@ const hubs: Hub[] = [
     title: 'Восточный кампус',
     text: 'Инновационная точка с акцентом на GameDev и киберспорт.',
     image: '/img/Vostochniy.jpg',
-    top: '280px',
-    left: '150px',
+    top: '100px',
+    left: '750px',
     color: '#3498db',
   },
 ]
@@ -117,7 +117,25 @@ const stats = [
   { value: '879', text: 'Лет со дня основания' },
   { value: '№1', text: 'В России по IT-технологиям', className: 'accent-bg' },
   { value: '200+', text: 'Музеев и галерей' },
-]
+];
+
+
+type Person = {
+  name: string;
+  years: string;
+  description: string;
+};
+
+const people: Person[] = [
+  { name: "Александр Суворов", years: "1730–1800", description: "Гениальный полководец" },
+  { name: "Эмиль Дьяков",   years: "1870–1945", description: "Археолог‑исследователь" },
+  { name: "Наталья Гумилёва", years: "1915–2002", description: "Поэт‑голос эпохи" },
+  { name: "Ксения Собакина", years: "род. 1986", description: "Художник‑исследователь" },
+  { name: "Игорь Сечин",    years: "род. 1958", description: "Нефтяной предприниматель" },
+  { name: "Алина Костина",  years: "род. 1994", description: "IT‑предприниматель" },
+  { name: "Мария Шарапова", years: "род. 1987", description: "Теннисный идол" },
+  { name: "Дмитрий Пучков", years: "род. 1972", description: "Научный блогер" },
+];
 
 function updateLines(mapContainer: HTMLDivElement | null) {
   if (!mapContainer) return
@@ -154,7 +172,7 @@ function updateLines(mapContainer: HTMLDivElement | null) {
 
 function initJellyDrag(
   elements: HTMLElement[],
-  options: { isMapNode?: boolean; onMapDrag?: () => void } = {},
+  options: { isMapNode?: boolean; onMapDrag?: () => void; container?: HTMLElement | null } = {},
 ) {
   const cleanups = elements.map((element) => {
     const state: DragState = {
@@ -164,6 +182,12 @@ function initJellyDrag(
       currentX: 0,
       currentY: 0,
     }
+
+    // Natural (untransformed) position relative to container, captured on pointerdown
+    let naturalLeft = 0
+    let naturalTop = 0
+    let naturalW = 0
+    let naturalH = 0
 
     const handlePointerDown = (event: PointerEvent) => {
       state.isDragging = true
@@ -177,6 +201,18 @@ function initJellyDrag(
       state.startX = event.clientX - state.currentX
       state.startY = event.clientY - state.currentY
 
+      // Capture natural position BEFORE any new transform is applied.
+      // elemRect already includes the current translate(currentX, currentY),
+      // so subtract it to get the untransformed offset from the container.
+      if (options.container) {
+        const containerRect = options.container.getBoundingClientRect()
+        const elemRect = element.getBoundingClientRect()
+        naturalLeft = elemRect.left - containerRect.left - state.currentX
+        naturalTop  = elemRect.top  - containerRect.top  - state.currentY
+        naturalW    = elemRect.width
+        naturalH    = elemRect.height
+      }
+
       element.setPointerCapture(event.pointerId)
       element.style.transition = 'none'
     }
@@ -184,8 +220,21 @@ function initJellyDrag(
     const handlePointerMove = (event: PointerEvent) => {
       if (!state.isDragging) return
 
-      const x = event.clientX - state.startX
-      const y = event.clientY - state.startY
+      let x = event.clientX - state.startX
+      let y = event.clientY - state.startY
+
+      if (options.container) {
+        // Use natural position captured at pointerdown — stable, no transform drift
+        const containerRect = options.container.getBoundingClientRect()
+        const minX = -naturalLeft
+        const maxX = containerRect.width  - naturalLeft - naturalW
+        const minY = -naturalTop
+        const maxY = containerRect.height - naturalTop  - naturalH
+
+        x = Math.max(minX, Math.min(maxX, x))
+        y = Math.max(minY, Math.min(maxY, y))
+      }
+
       const diffX = x - state.currentX
       const skewX = Math.max(Math.min(diffX * 0.5, 15), -15)
       const scaleY = 1 + Math.min(Math.abs(diffX) * 0.003, 0.2)
@@ -283,6 +332,46 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // 3-D tilt for bento cards
+  useEffect(() => {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.bento-item'))
+
+    const listeners = cards.map((card) => {
+      const onMove = (e: MouseEvent) => {
+        const rect = card.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+        const cx = rect.width / 2
+        const cy = rect.height / 2
+        const rotX = ((y - cy) / cy) * -8
+        const rotY = ((x - cx) / cx) * 8
+        card.style.transition =
+          'box-shadow 0.1s ease, background 0.4s ease, color 0.3s ease'
+        card.style.transform = `perspective(700px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px) scale(1.04)`
+      }
+
+      const onLeave = () => {
+        card.style.transition =
+          'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease, background 0.45s ease, color 0.35s ease'
+        card.style.transform = ''
+        setTimeout(() => {
+          card.style.transition = ''
+        }, 650)
+      }
+
+      card.addEventListener('mousemove', onMove)
+      card.addEventListener('mouseleave', onLeave)
+      return { card, onMove, onLeave }
+    })
+
+    return () => {
+      listeners.forEach(({ card, onMove, onLeave }) => {
+        card.removeEventListener('mousemove', onMove)
+        card.removeEventListener('mouseleave', onLeave)
+      })
+    }
+  }, [])
+
   useEffect(() => {
     const mapContainer = mapRef.current
     const sandbox = sandboxRef.current
@@ -293,6 +382,7 @@ function App() {
     )
     const cleanupSandboxDrag = initJellyDrag(
       Array.from(sandbox?.querySelectorAll<HTMLElement>('.drag-item-free') ?? []),
+      { container: sandbox },
     )
 
     updateMapLines()
@@ -367,6 +457,21 @@ function App() {
           </div>
         </section>
 
+        <section className="people-section section reveal">
+          <div className="container">
+            <h2 className="section-title reveal">Выдающиеся личности</h2>
+            <div className="bento-grid reveal">
+              {people.map((person) => (
+                <div className="bento-item reveal" key={person.name}>
+                  <h3>{person.name}</h3>
+                  <span className="bento-num">{person.years}</span>
+                  <p>{person.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="map-section section" id="interactive-map">
           <div className="container">
             <h2 className="section-title reveal">Интерактивные локации</h2>
@@ -432,7 +537,17 @@ function App() {
 
       <footer className="footer">
         <div className="container">
-          <p><a href="https://github.com/crazy-tosser3">GitHub</a> | <a href="https://t.me/crzto3">Telegram</a></p>
+          <div className="footer-links">
+  <a href="https://github.com/crazy-tosser3" target="_blank" rel="noopener" className="footer-link">
+    GitHub
+  </a>
+  <a href="https://t.me/crzto3" target="_blank" rel="noopener" className="footer-link">
+    Telegram
+  </a>
+  <a href="mailto:crazytosser3@gmail.com" className="footer-link">
+    Email
+  </a>
+</div>
         </div>
       </footer>
 
