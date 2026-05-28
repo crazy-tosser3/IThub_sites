@@ -44,3 +44,10 @@ export type StatItem = {
   text: string
   className?: string
 }
+
+export type Review = {
+  name: string;
+  title: string;
+  image: string;
+  text: string;
+};
