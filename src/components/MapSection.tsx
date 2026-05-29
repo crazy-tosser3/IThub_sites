@@ -6,7 +6,7 @@ type Props = { mapRef: RefObject<HTMLDivElement | null> }
 
 export function MapSection({ mapRef }: Props) {
   return (
-    <section className={`pt-[30px] ${sectionPy}`} id="interactive-map">
+    <section id="map" className={`pt-[30px] ${sectionPy}`}>
       <div className={container}>
         <h2 className={sectionTitle}>Интерактивные локации</h2>
         <div className="map-container reveal" ref={mapRef}>

@@ -3,7 +3,7 @@ import { container, sectionPy, sectionTitle } from '../constants/tw'
 
 export function HistorySection() {
   return (
-    <section className={sectionPy} id="about">
+    <section id="history" className={sectionPy}>
       <div className={container}>
         <h2 className={sectionTitle}>История Москвы</h2>
         <div className="flex flex-col gap-[100px]">

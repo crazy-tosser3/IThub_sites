@@ -20,7 +20,7 @@ export function HeroSection({ heroText }: Props) {
           {heroText}
         </h1>
         <a
-          href="#about"
+          href="#history"
           className={[
             'inline-block py-[15px] px-10 bg-accent text-white no-underline',
             'rounded-[50px] font-bold',

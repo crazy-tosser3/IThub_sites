@@ -3,7 +3,7 @@ import { container, sectionPy, sectionTitle } from '../constants/tw'
 
 export function ArchitectureSection() {
   return (
-    <section className={`architecture ${sectionPy} bg-gray-50 text-gray-800`}>
+    <section id="architecture" className={`architecture ${sectionPy} bg-gray-50 text-gray-800`}>
       <div className={container}>
         <h2 className={sectionTitle}>Архитектурные эпохи</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-12">

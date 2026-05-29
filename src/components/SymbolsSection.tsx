@@ -3,7 +3,7 @@ import { container, sectionPy, sectionTitle } from '../constants/tw'
 
 export function SymbolsSection() {
   return (
-    <section className={`symbols ${sectionPy}`}>
+    <section id="symbols" className={`symbols ${sectionPy}`}>
       <div className={container}>
         <h2 className={sectionTitle}>Символы Москвы</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">

@@ -3,7 +3,7 @@ import { container, sectionPy, sectionTitle } from '../constants/tw'
 
 export function PeopleSection() {
   return (
-    <section className={`people ${sectionPy} bg-gray-50 text-gray-800`}>
+    <section id="people" className={`people ${sectionPy} bg-gray-50 text-gray-800`}>
       <div className={container}>
         <h2 className={sectionTitle}>Выдающиеся личности</h2>
         {/* Изменена сетка для лучшего отображения на мобильных устройствах */}

@@ -3,7 +3,7 @@ import { container, sectionPy, sectionTitle } from '../constants/tw'
 
 export function StatsSection() {
   return (
-    <section className={`stats ${sectionPy}`}>
+    <section id="stats" className={`stats ${sectionPy}`}>
       <div className={container}>
         <h2 className={sectionTitle}>Москва в цифрах</h2>
         <div
