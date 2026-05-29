@@ -65,7 +65,7 @@ export function Header({ isScrolled }: HeaderProps) {
       }`}
     >
       <div className={`${container} flex items-center justify-between h-20`}>
-        <a href="#" className="text-2xl font-bold text-gray-800">
+        <a href="#" className="text-2xl font-bold text-accent">
           Москва
         </a>
         
