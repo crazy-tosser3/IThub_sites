@@ -32,7 +32,7 @@ export function HistorySection() {
               </div>
 
               {/* text */}
-              <div className="flex-1 relative">
+              <div className="flex-1 relative history-text">
                 <span
                   className="absolute top-[-60px] left-[-20px] -z-10 text-[6rem] font-black leading-none"
                   style={{ color: 'rgba(231,76,60,0.1)' }}

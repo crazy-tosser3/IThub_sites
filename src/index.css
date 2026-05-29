@@ -249,3 +249,25 @@ body {
   .main-fact,
   .wide { grid-column: span 1 !important; grid-row: span 1 !important; }
 }
+
+/* ----- Fix long word overflow on iOS Safari (global) ----- */
+h1, h2, h3, h4, h5, h6,
+p, span, strong, li, a {
+  overflow-wrap: break-word;   /* break long words before overflowing */
+  word-break: break-word;      /* older WebKit fallback */
+  hyphens: auto;
+  -webkit-hyphens: auto;       /* Safari / iOS */
+}
+
+/* ensure flex/grid children can shrink below content size */
+.node-text,
+.hub-details,
+.drag-item-free {
+  min-width: 0;
+}
+
+/* history cards: text column must not escape flex container */
+.history-text {
+  min-width: 0;
+  overflow: hidden;
+}
