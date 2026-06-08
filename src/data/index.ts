@@ -88,22 +88,22 @@ export const stats: StatItem[] = [
 ];
 
 export const people: Person[] = [
-  { name: 'Георгий Жуков',     years: '1896–1974', description: 'Армия и Наука' },
-  { name: 'Сергей Королёв',    years: '1907–1966', description: 'Армия и Наука' },
-  { name: 'Михаил Булгаков',   years: '1891–1940', description: 'Общество и Культура' },
-  { name: 'Алексей Толстой', years: '1883–1945', description: 'Общество и Культура' },
+  { name: 'Георгий Жуков',     years: '1896–1974', description: 'Армия и Наука', image: '/img/people_jukov.jpg' },
+  { name: 'Сергей Королёв',    years: '1907–1966', description: 'Армия и Наука', image: '/img/people_korolev.jpg' },
+  { name: 'Михаил Булгаков',   years: '1891–1940', description: 'Общество и Культура', image: '/img/people_bulgakov.jpg' },
+  { name: 'Алексей Толстой', years: '1883–1945', description: 'Общество и Культура', image: '/img/people_tolstoy.jpg' },
 
-  { name: 'Сергей Собянин',    years: 'род. 1958',  description: 'Экономика и Государство' },
-  { name: 'Юрий Долгорукий',   years: '1090-е – 1157', description: 'Экономика и Государство' },
-  { name: 'Иван III',          years: '1440–1505', description: 'Экономика и Государство' },
-  { name: 'Владимир Путин',    years: 'род. 1952', description: 'Экономика и Государство' },
+  { name: 'Сергей Собянин',    years: 'род. 1958',  description: 'Экономика и Государство', image: '/img/people_sobyanin.jpg' },
+  { name: 'Юрий Долгорукий',   years: '1090-е – 1157', description: 'Экономика и Государство', image: '/img/people_dolgorukiy.jpg' },
+  { name: 'Иван III',          years: '1440–1505', description: 'Экономика и Государство', image: '/img/people_ivan3.jpg' },
+  { name: 'Владимир Путин',    years: 'род. 1952', description: 'Экономика и Государство', image: '/img/people_putin.jpg' },
 ];
 
 export const symbols: SymbolItem[] = [
   {
     name: 'Герб Москвы',
     description: 'Главный символ города — герб с изображением Святого Георгия Победоносца, поражающего змея. Он олицетворяет победу добра над злом и уходит корнями в княжескую символику.',
-    image: '/img/gerb.png',
+    image: '/img/gerb.jpg',
     alt: 'Герб Москвы',
   },
   {
@@ -115,10 +115,14 @@ export const symbols: SymbolItem[] = [
   {
     name: '«Белокаменная»',
     description: 'Это неофициальное название связано с белокаменными стенами Московского Кремля, построенными в XIV–XV веках, которые придавали городу величественный и светлый облик.',
+    image: '/img/symbol_belokamennaya.jpg',
+    alt: 'Белокаменная Москва',
   },
   {
     name: '«Третий Рим»',
     description: 'Идея о духовном наследии Москвы после падения Рима и Константинополя. Эта концепция подчёркивала роль города как нового центра православного мира.',
+    image: '/img/symbol_rome.jpg',
+    alt: 'Москва — Третий Рим',
   },
 ];
 
@@ -126,18 +130,26 @@ export const architectureEras: ArchitectureEra[] = [
   {
     name: 'Средневековая Русь',
     description: 'Кремль, монастыри',
+    image: '/img/arch_medieval.jpg',
+    alt: 'Средневековая Русь',
   },
   {
     name: 'Барокко и классицизм',
     description: 'Дворцы, усадьбы',
+    image: '/img/arch_baroque.jpg',
+    alt: 'Барокко и классицизм',
   },
   {
     name: 'Советская архитектура',
     description: 'Сталинские высотки',
+    image: '/img/arch_soviet.jpg',
+    alt: 'Советская Москва',
   },
   {
     name: 'Современность',
     description: 'Москва-Сити',
+    image: '/img/arch_modern.jpg',
+    alt: 'Москва-Сити',
   },
 ];
 
@@ -145,18 +157,26 @@ export const culturalTraditions: CulturalTradition[] = [
   {
     name: 'Масленица',
     description: 'Народные гуляния, блины и сжигание чучела.',
+    image: '/img/maslenitsa.webp',
+    alt: 'Масленица',
   },
   {
     name: 'День города',
     description: 'Масштабные концерты и фестивали по всей столице.',
+    image: '/img/dengoroda.jpg',
+    alt: 'День города Москвы',
   },
   {
     name: 'Сезонные ярмарки',
     description: 'Пасхальные и рождественские базары в центре города.',
+    image: '/img/yarmorki.jpg',
+    alt: 'Сезонные ярмарки',
   },
   {
     name: 'Фестиваль «Круг света»',
     description: 'Впечатляющие световые шоу на фасадах зданий.',
+    image: '/img/krugsveta.jpg',
+    alt: 'Фестиваль Круг света',
   },
 ];
 

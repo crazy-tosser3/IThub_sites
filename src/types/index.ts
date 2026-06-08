@@ -37,6 +37,7 @@ export type Person = {
   name: string
   years: string
   description: string
+  image: string
 }
 
 export type StatItem = {
@@ -62,9 +63,13 @@ export interface SymbolItem {
 export interface ArchitectureEra {
   name: string;
   description: string;
+  image: string;
+  alt: string;
 }
 
 export interface CulturalTradition {
   name: string;
   description: string;
+  image: string;
+  alt: string;
 }

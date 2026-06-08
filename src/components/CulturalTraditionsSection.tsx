@@ -6,14 +6,23 @@ export function CulturalTraditionsSection() {
     <section id="traditions" className={`traditions ${sectionPy}`}>
       <div className={container}>
         <h2 className={sectionTitle}>Культурные традиции</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-12">
+        <div className="trad-grid mt-12">
           {culturalTraditions.map((tradition) => (
-            <div
-              key={tradition.name}
-              className="reveal text-center bg-white p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-            >
-              <h3 className="text-xl font-bold">{tradition.name}</h3>
-              <p className="mt-4 text-gray-600">{tradition.description}</p>
+            <div key={tradition.name} className="reveal trad-card">
+              <div className="trad-image-wrapper">
+                <img
+                  src={tradition.image}
+                  alt={tradition.alt}
+                  className="trad-image"
+                  loading="lazy"
+                />
+                <div className="trad-image-overlay" />
+                <span className="trad-label">{tradition.name}</span>
+              </div>
+              <div className="trad-info">
+                <h3 className="trad-name">{tradition.name}</h3>
+                <p className="trad-description">{tradition.description}</p>
+              </div>
             </div>
           ))}
         </div>

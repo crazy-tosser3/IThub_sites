@@ -120,52 +120,433 @@ body {
 }
 
 /* ── People section ──────────────────────────────────────── */
-.people-section .bento-item {
-  align-items: flex-start;
-  text-align: left;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.45s ease, color 0.35s ease;
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
-.people-section .bento-num { font-size: 2rem !important; position: relative; z-index: 1; }
 
-/* clamp description to 2 lines */
-.people-section .bento-item p {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+.person-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.person-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(231, 76, 60, 0.15);
+}
+
+/* Image wrapper */
+.person-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
-/* left accent bar */
-.people-section .bento-item::before {
-  content: '';
-  position: absolute; left: 0; top: 50%; translate: 0 -50%;
-  width: 4px; height: 0;
-  background: linear-gradient(to bottom, #e74c3c, #ff9a6c);
-  border-radius: 0 2px 2px 0;
-  transition: height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  pointer-events: none; z-index: 2;
-}
-.people-section .bento-item:hover::before { height: 55%; }
-
-/* overlay glow */
-.people-section .bento-item::after {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: inherit;
-  opacity: 0; transition: opacity 0.4s ease;
-  pointer-events: none; z-index: 0;
-}
-.people-section .bento-item:hover::after  { opacity: 1; }
-.people-section .bento-item:hover {
-  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(231, 76, 60, 0.22);
+.person-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s ease;
 }
 
-.people-section .bento-item h3,
-.people-section .bento-item p,
-.people-section .bento-item .bento-num { transition: color 0.35s ease; position: relative; z-index: 1; }
-.people-section .bento-item:hover h3    { color: rgba(0, 0, 0, 0.72); }
-.people-section .bento-item:hover p     { color: rgba(0, 0, 0, 0.72); }
-.people-section .bento-item:hover .bento-num { color: #e74c3c; }
+.person-card:hover .person-image {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay on image */
+.person-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(44, 62, 80, 0.85) 100%
+  );
+  pointer-events: none;
+}
+
+/* Info block */
+.person-info {
+  padding: 18px 20px 22px;
+  text-align: center;
+}
+
+.person-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.3;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.person-card:hover .person-name {
+  color: #e74c3c;
+}
+
+.person-years {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 4px 0 10px;
+  font-weight: 500;
+}
+
+.person-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e74c3c22, #ff6b6b22);
+  color: #e74c3c;
+  border: 1px solid #e74c3c22;
+}
+
+/* Accent border on hover */
+.person-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.person-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Architecture section ────────────────────────────────── */
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.arch-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.arch-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(231, 76, 60, 0.15);
+}
+
+/* Image wrapper */
+.arch-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.arch-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.arch-card:hover .arch-image {
+  transform: scale(1.08);
+}
+
+/* Gradient overlay */
+.arch-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(44, 62, 80, 0.75) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating label on image */
+.arch-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  z-index: 2;
+}
+
+/* Info block */
+.arch-info {
+  padding: 16px 18px 20px;
+  text-align: center;
+}
+
+.arch-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.arch-card:hover .arch-name {
+  color: #e74c3c;
+}
+
+/* Accent bottom bar */
+.arch-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.arch-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Cultural Traditions section ────────────────────────── */
+.trad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.trad-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.trad-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(231, 76, 60, 0.15);
+}
+
+.trad-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.trad-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.trad-card:hover .trad-image {
+  transform: scale(1.08);
+}
+
+.trad-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(44, 62, 80, 0.72) 100%
+  );
+  pointer-events: none;
+}
+
+.trad-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  z-index: 2;
+}
+
+.trad-info {
+  padding: 16px 18px 20px;
+  text-align: center;
+}
+
+.trad-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 8px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.trad-card:hover .trad-name {
+  color: #e74c3c;
+}
+
+.trad-description {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #666;
+  margin: 0;
+}
+
+.trad-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.trad-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Symbols section ─────────────────────────────────────── */
+.symbols-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.symbol-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.symbol-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(231, 76, 60, 0.12);
+}
+
+/* Image wrapper */
+.symbol-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.symbol-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.symbol-card:hover .symbol-image {
+  transform: scale(1.06);
+}
+
+/* Gradient overlay */
+.symbol-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(44, 62, 80, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+/* Info block */
+.symbol-info {
+  padding: 22px 24px 26px;
+}
+
+.symbol-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 10px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.symbol-card:hover .symbol-name {
+  color: #e74c3c;
+}
+
+.symbol-description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #666;
+  margin: 0;
+}
+
+/* Accent bottom bar on hover */
+.symbol-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e74c3c, #ff6b6b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.symbol-card:hover::after {
+  transform: scaleX(1);
+}
 
 /* ── Interactive map (queried by JS) ─────────────────────── */
 .map-container {
@@ -213,7 +594,79 @@ body {
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
+
+/* Tablet: 3 columns */
+@media (max-width: 1024px) {
+  .people-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .arch-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .trad-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
+  /* People grid: 2 columns on mobile */
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .person-card {
+    border-radius: 14px;
+  }
+
+  .person-info {
+    padding: 12px 10px 14px;
+  }
+
+  .person-name {
+    font-size: 0.88rem;
+  }
+
+  .person-years {
+    font-size: 0.75rem;
+    margin: 2px 0 8px;
+  }
+
+  .person-tag {
+    font-size: 0.62rem;
+    padding: 3px 8px;
+  }
+
+  /* Symbols grid: single column on mobile */
+  .symbols-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .symbol-card {
+    border-radius: 16px;
+  }
+
+  .symbol-info {
+    padding: 16px 16px 20px;
+  }
+
+  .symbol-name {
+    font-size: 1.1rem;
+    margin: 0 0 8px;
+  }
+
+  .symbol-description {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
   /* make interactive nodes/cards static on mobile */
   .node-card,
   .drag-item-free {
@@ -245,9 +698,110 @@ body {
     background-image: none;
   }
 
+  /* Architecture grid: 2 columns on mobile */
+  .arch-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .arch-card {
+    border-radius: 14px;
+  }
+
+  .arch-info {
+    padding: 12px 10px 16px;
+  }
+
+  .arch-name {
+    font-size: 0.9rem;
+  }
+
+  /* Traditions grid: 1 column on mobile */
+  .trad-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .trad-card {
+    border-radius: 16px;
+  }
+
+  .trad-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  .trad-info {
+    padding: 14px 16px 18px;
+  }
+
+  .trad-name {
+    font-size: 1rem;
+    margin: 0 0 6px;
+  }
+
+  .trad-description {
+    font-size: 0.85rem;
+  }
+
+  .arch-label {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    bottom: 8px;
+    left: 8px;
+  }
+
   /* collapse grid spans */
   .main-fact,
   .wide { grid-column: span 1 !important; grid-row: span 1 !important; }
+}
+
+/* Small mobile */
+@media (max-width: 420px) {
+  .people-grid {
+    gap: 10px;
+  }
+
+  .person-info {
+    padding: 10px 8px 12px;
+  }
+
+  .person-name {
+    font-size: 0.8rem;
+  }
+
+  .person-tag {
+    font-size: 0.58rem;
+    padding: 2px 6px;
+  }
+
+  .symbol-info {
+    padding: 12px 12px 16px;
+  }
+
+  .symbol-name {
+    font-size: 1rem;
+  }
+
+  .symbol-description {
+    font-size: 0.82rem;
+  }
+
+  .arch-grid {
+    gap: 10px;
+  }
+
+  .arch-info {
+    padding: 10px 8px 12px;
+  }
+
+  .arch-name {
+    font-size: 0.82rem;
+  }
+
+  .arch-label {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
 }
 
 /* ----- Fix long word overflow on iOS Safari (global) ----- */

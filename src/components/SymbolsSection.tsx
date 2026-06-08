@@ -3,17 +3,30 @@ import { container, sectionPy, sectionTitle } from '../constants/tw'
 
 export function SymbolsSection() {
   return (
-    <section id="symbols" className={`symbols ${sectionPy}`}>
+    <section id="symbols" className={`symbols-section ${sectionPy}`}>
       <div className={container}>
         <h2 className={sectionTitle}>Символы Москвы</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div className="symbols-grid mt-12">
           {symbols.map((symbol) => (
             <div
               key={symbol.name}
-              className="reveal flex flex-col bg-white p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+              className="symbol-card reveal"
             >
-              <h3 className="text-2xl font-bold text-gray-800">{symbol.name}</h3>
-              <p className="mt-4 text-gray-600 flex-grow">{symbol.description}</p>
+              {symbol.image && (
+                <div className="symbol-image-wrapper">
+                  <img
+                    src={symbol.image}
+                    alt={symbol.alt || symbol.name}
+                    className="symbol-image"
+                    loading="lazy"
+                  />
+                  <div className="symbol-image-overlay" />
+                </div>
+              )}
+              <div className="symbol-info">
+                <h3 className="symbol-name">{symbol.name}</h3>
+                <p className="symbol-description">{symbol.description}</p>
+              </div>
             </div>
           ))}
         </div>
